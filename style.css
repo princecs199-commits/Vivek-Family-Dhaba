@@ -1,0 +1,286 @@
+/* ========================================
+   VIVEK FAMILY DHABA - COMPLETE CSS
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+  --primary: #702719;
+  --dark: #35130d;
+  --gold: #e9b85e;
+  --cream: #fff8ef;
+  --white: #ffffff;
+  --text: #35251f;
+  --muted: #77665e;
+  --border: #ead9c8;
+  --shadow: 0 8px 28px rgba(53, 19, 13, 0.12);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 78px;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--white);
+  background: var(--dark);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  font-size: 2rem;
+}
+
+.brand strong {
+  display: block;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.brand small {
+  display: block;
+  color: #f4dfc7;
+  font-size: 0.75rem;
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 19px;
+}
+
+.nav-links a {
+  color: #fff6ed;
+  font-size: 0.87rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 21px;
+  height: 21px;
+  padding: 0 5px;
+  border-radius: 50%;
+  color: var(--dark);
+  background: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Mobile menu button */
+.menu-toggle {
+  display: none;
+  border: 0;
+  color: var(--gold);
+  background: transparent;
+  font-size: 1.8rem;
+}
+
+/* Hero section */
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 45px;
+  padding: 75px 7%;
+  color: var(--white);
+  background: linear-gradient(135deg, #35130d, #702719);
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero h1 {
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.7rem, 5vw, 4.6rem);
+  line-height: 1.13;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero-photo {
+  width: 100%;
+  height: 390px;
+  border: 5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22px;
+  object-fit: cover;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  font-weight: 700;
+  text-align: center;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  border-color: var(--gold);
+  color: var(--dark);
+  background: var(--gold);
+}
+
+.btn-outline {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+
+/* Menu grid */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 25px;
+}
+
+.food-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #eee0d2;
+  border-radius: 15px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.food-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(53, 19, 13, 0.17);
+}
+
+.food-image {
+  width: 100%;
+  height: 235px;
+  overflow: hidden;
+  background: #eadccc;
+}
+
+.food-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.food-card:hover .food-image img {
+  transform: scale(1.06);
+}
+
+/* Responsive layout */
+@media (max-width: 1000px) {
+  .food-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 48px 6%;
+  }
+
+  .benefit-grid,
+  .food-grid,
+  .contact-details {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+}

@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vivek Family Dhaba - delicious Indian food, fresh meals and family dining.">
+  <title>Vivek Family Dhaba | Fresh Food, Great Taste</title>
+
+  <style>
+    :root {
+      --brand: #b83220;
+      --brand-dark: #8f2417;
+      --ink: #25211e;
+      --muted: #6b625c;
+      --cream: #fffaf4;
+      --line: #eadfd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px clamp(16px, 4vw, 56px);
+      background: #fffdf9;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 18px #2b1a0c0a;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-mark { font-size: 32px; }
+    .brand strong, .brand small { display: block; }
+    .brand small { font-size: 12px; color: var(--muted); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: var(--brand); }
+
+    .cart-count {
+      display: inline-grid;
+      place-items: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 5px;
+      border-radius: 50px;
+      background: var(--brand);
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 36px;
+      padding: 60px clamp(18px, 6vw, 90px);
+      background: linear-gradient(120deg, #fff8ed, #fff);
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 5vw, 68px);
+      line-height: 1.08;
+      margin: 8px 0 18px;
+    }
+
+    .hero h1 span { color: var(--brand); }
+
+    .hero-content > p:not(.eyebrow) {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .eyebrow {
+      color: var(--brand);
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
+    .hero-photo-wrap { position: relative; }
+
+    .hero-photo {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 26px;
+      box-shadow: 0 18px 50px #4b251d20;
+    }
+
+    .photo-badge {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      background: white;
+      padding: 12px 18px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px #0001;
+    }
+
+    .photo-badge strong, .photo-badge small { display: block; }
+    .photo-badge small { color: var(--muted); }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+
+    .hero-note { color: var(--muted); }
+    .hero-note span { color: #e6a329; }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .15s, background .15s;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+    }
+
+    .btn-primary:hover { background: var(--brand-dark); }
+
+    .btn-outline {
+      border: 1px solid var(--brand);
+      color: var(--brand);
+      background: transparent;
+    }
+
+    .btn-light { background: #f5eee7; color: var(--ink); }
+    .full-width { width: 100%; margin-top: 10px; }
+
+    .section { padding: 64px clamp(16px, 5vw, 72px); }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 32px;
+    }
+
+    .section-heading h2,
+    .offer-section h2,
+    .contact-section h2 {
+      font-size: clamp(28px, 3vw, 40px);
+      margin: 4px 0 10px;
+    }
+
+    .section-heading p { color: var(--muted); }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .benefit-card {
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .benefit-icon { font-size: 32px; }
+    .menu-section { background: #fffaf5; }
+
+    .menu-tools {
+      max-width: 1100px;
+      margin: 0 auto 26px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: white;
+      margin-bottom: 14px;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      font: inherit;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: white;
+      padding: 9px 14px;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .food-card {
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 6px 22px #321d1008;
+    }
+
+    .food-image img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background: #f4eee7;
+    }
+
+    .food-info { padding: 18px; }
+
+    .food-category {
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--brand);
+      font-weight: 800;
+    }
+
+    .food-info h3 { margin: 6px 0; }
+
+    .food-info p {
+      min-height: 48px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .food-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .food-bottom strong { font-size: 19px; }
+    .add-to-cart { font-size: 13px; padding: 10px 12px; }
+    .empty-search { text-align: center; color: var(--muted); padding: 25px; }
+
+    .offer-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 38px clamp(18px, 5vw, 72px);
+      background: #fff0df;
+    }
+
+    .offer-section p { color: var(--muted); }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1.6fr .8fr;
+      gap: 24px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .cart-panel, .summary-panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: white;
+    }
+
+    .summary-panel {
+      align-self: start;
+      background: var(--cream);
+    }
+
+    .cart-empty { color: var(--muted); }
+
+    .cart-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-row:last-child { border-bottom: 0; }
+    .cart-row h4 { margin: 0 0 4px; }
+    .cart-row small { color: var(--muted); }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .qty-btn, .remove-btn {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 7px;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+
+    .remove-btn { color: var(--brand); }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 12px 0;
+    }
+
+    .total-line {
+      border-top: 1px solid var(--line);
+      font-size: 19px;
+      margin-top: 8px;
+    }
+
+    .delivery-hint, .form-note, .checkout-note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .order-form {
+      max-width: 850px;
+      margin: auto;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .form-grid label {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .form-grid input,
+    .form-grid textarea,
+    .form-grid select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d9ccc1;
+      border-radius: 9px;
+      font: inherit;
+      background: white;
+    }
+
+    .wide-field { grid-column: 1 / -1; }
+    .form-message { font-weight: 700; white-space: pre-wrap; }
+    .checkout-note { max-width: 850px; margin: 18px auto; }
+
+    .contact-section {
+      display: flex;
+      justify-content: space-between;
+      gap: 35px;
+      padding: 52px clamp(18px, 5vw, 72px);
+      background: #29211d;
+      color: white;
+    }
+
+    .contact-section p { color: #e8ddd5; }
+    .contact-details p { margin: 0 0 16px; }
+    .contact-details a { color: #ffd2a0; }
+
+    .site-footer {
+      text-align: center;
+      padding: 20px;
+      background: #1d1714;
+      color: #ddd;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: 12px; }
+      .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-photo { height: 340px; }
+    }
+
+    @media (max-width: 650px) {
+      .site-header { flex-wrap: wrap; }
+      .menu-toggle { display: block; }
+
+      .nav-links {
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 0;
+      }
+
+      .nav-links.open { display: flex; }
+      .hero { grid-template-columns: 1fr; padding-top: 38px; }
+      .hero-photo { height: 290px; }
+
+      .benefit-grid,
+      .food-grid,
+      .cart-layout,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wide-field { grid-column: auto; }
+
+      .offer-section,
+      .contact-section {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .food-info p { min-height: 0; }
+      .section { padding-top: 45px; padding-bottom: 45px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Vivek Family Dhaba home">
+      <span class="brand-mark">🍽️</span>
+      <span>
+        <strong>Vivek Family Dhaba</strong>
+        <small>Fresh • Tasty • Homely</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menu-toggle"
+      aria-label="Open navigation" aria-expanded="false">☰</button>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#menu">Food Menu</a>
+      <a href="#about">About</a>
+      <a href="#offers">Offers</a>
+      <a href="#cart">My Cart <span class="cart-count" id="cart-count">0</span></a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">WELCOME TO VIVEK FAMILY DHABA</p>
+        <h1>Good Food.<br><span>Great Memories.</span></h1>
+        <p>Fresh food, great taste, and a warm family atmosphere.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu">Explore Our Menu</a>
+          <a class="btn btn-outline" href="#order">Order Now</a>
+        </div>
+
+        <div class="hero-note">
+          <span>★</span> Made with care, served with love
+        </div>
+      </div>
+
+      <div class="hero-photo-wrap">
+        <img class="hero-photo"
+          src="https://i0.wp.com/haveliindiannepali.com/wp-content/uploads/2022/11/veg-thali.png?fit=1026%2C1000&ssl=1"
+          alt="Indian food meal" fetchpriority="high">
+        <div class="photo-badge">
+          <strong>Fresh & Delicious</strong>
+          <small>Every single day</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">WHY CHOOSE US</p>
+        <h2>A Little Taste of Home</h2>
+        <p>Simple ingredients, familiar flavours, and food made to bring people together.</p>
+      </div>
+
+      <div class="benefit-grid">
+        <article class="benefit-card">
+          <span class="benefit-icon">🥗</span>
+          <h3>Fresh Food</h3>
+          <p>Freshly prepared meals for a satisfying dining experience.</p>
+        </article>
+
+        <article class="benefit-card">
+          <span class="benefit-icon">👨‍🍳</span>
+          <h3>Great Taste</h3>
+          <p>Enjoy comforting Indian flavours and much-loved classics.</p>
+        </article>
+
+        <article class="benefit-card">
+          <span class="benefit-icon">👨‍👩‍👧‍👦</span>
+          <h3>Family Friendly</h3>
+          <p>A welcoming place for family meals and friendly gatherings.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="section-heading">
+        <p class="eyebrow">MADE FRESH FOR YOU</p>
+        <h2>Our Complete Food Menu</h2>
+        <p>Choose your favourite food and add it to your cart.</p>
+      </div>
+
+      <div class="menu-tools">
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="menu-search" type="search"
+            placeholder="Search dishes..." aria-label="Search dishes">
+        </label>
+
+        <div class="filter-buttons" id="filter-buttons">
+          <button type="button" class="filter-btn active" data-category="all">All Items</button>
+          <button type="button" class="filter-btn" data-category="main">Main Course</button>
+          <button type="button" class="filter-btn" data-category="rice">Rice & Biryani</button>
+          <button type="button" class="filter-btn" data-category="bread">Breads</button>
+          <button type="button" class="filter-btn" data-category="thali">Thali</button>
+        </div>
+      </div>
+
+      <div class="food-grid" id="food-grid">
+        <!-- Menu items are generated from the JavaScript menu data below. -->
+      </div>
+
+      <p class="empty-search" id="empty-search" hidden>
+        No dishes found. Try another search.
+      </p>
+    </section>
+
+    <section class="offer-section" id="offers">
+      <div>
+        <p class="eyebrow">GOOD FOOD, GOOD MOOD</p>
+        <h2>Special Offers</h2>
+        <p>Ask us about current meal offers and family combos.</p>
+      </div>
+      <a class="btn btn-primary" href="#contact">Ask About Offers</a>
+    </section>
+
+    <section class="section cart-section" id="cart">
+      <div class="section-heading">
+        <p class="eyebrow">YOUR SELECTION</p>
+        <h2>My Shopping Cart</h2>
+        <p>Review your items before placing your order.</p>
+      </div>
+
+      <div class="cart-layout">
+        <div class="cart-panel">
+          <div id="cart-items" class="cart-items">
+            <p class="cart-empty">Your cart is empty. Add food from the menu.</p>
+          </div>
+        </div>
+
+        <aside class="summary-panel">
+          <h3>Order Summary</h3>
+
+          <div class="summary-line">
+            <span>Subtotal</span>
+            <strong id="cart-subtotal">₹0.00</strong>
+          </div>
+
+          <div class="summary-line">
+            <span>Delivery</span>
+            <strong id="delivery-charge">₹0.00</strong>
+          </div>
+
+          <p class="delivery-hint">₹30 delivery charge for delivery orders.</p>
+
+          <div class="summary-line total-line">
+            <span>Total</span>
+            <strong id="cart-total">₹0.00</strong>
+          </div>
+
+          <button class="btn btn-light full-width" id="clear-cart" type="button">
+            Clear Cart
+          </button>
+
+          <a class="btn btn-primary full-width" href="#order">Proceed to Order</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section order-section" id="order">
+      <div class="section-heading">
+        <p class="eyebrow">ALMOST THERE</p>
+        <h2>Place Your Order</h2>
+        <p>Enter your details and review your order.</p>
+      </div>
+
+      <form id="order-form" class="order-form">
+        <div class="form-grid">
+          <label>
+            Full Name
+            <input id="customer-name" name="name" type="text"
+              placeholder="Your name" required maxlength="80">
+          </label>
+
+          <label>
+            Phone Number
+            <input id="customer-phone" name="phone" type="tel"
+              inputmode="numeric" pattern="[0-9]{10}"
+              placeholder="10-digit mobile number"
+              required maxlength="10">
+          </label>
+
+          <label class="wide-field">
+            Delivery Address
+            <textarea id="customer-address" name="address" rows="3"
+              placeholder="House number, street, area, city"
+              required maxlength="300"></textarea>
+          </label>
+
+          <label>
+            Order Type
+            <select id="order-type" name="orderType">
+              <option value="delivery">Home Delivery</option>
+              <option value="pickup">Self Pickup</option>
+              <option value="dinein">Dine In</option>
+            </select>
+          </label>
+
+          <label>
+            Payment Method
+            <select id="payment-method" name="payment">
+              <option value="cod">Cash on Delivery / Pay at counter</option>
+              <option value="upi">UPI (demo only)</option>
+              <option value="card">Card (demo only)</option>
+            </select>
+          </label>
+
+          <label class="wide-field">
+            Special Instructions (optional)
+            <textarea id="special-instructions" name="instructions"
+              rows="2" placeholder="Less spicy, no onion, etc."
+              maxlength="300"></textarea>
+          </label>
+        </div>
+
+        <p class="form-note" id="payment-note">
+          Demo checkout only. No payment will be collected on this website.
+        </p>
+
+        <button class="btn btn-primary" type="submit">Review Order</button>
+        <p class="form-message" id="order-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="checkout-note">
+        <strong>Order confirmation:</strong>
+        Your order details will be prepared in WhatsApp. Please send the message to submit the order.
+        Online payments are not processed by this website.
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div>
+        <p class="eyebrow">WE'D LOVE TO HEAR FROM YOU</p>
+        <h2>Visit or Contact Us</h2>
+        <p>Visit us in Hyderabad, Telangana, or call us to ask about menu items and orders.</p>
+      </div>
+
+      <div class="contact-details">
+        <p>
+          <span>📍</span>
+          <strong>Address</strong><br>
+          Hyderabad, Telangana, India
+        </p>
+
+        <p>
+          <span>📞</span>
+          <strong>Phone</strong><br>
+          <a href="tel:7024386895">7024386895</a> ·
+          <a href="https://wa.me/917024386895" target="_blank" rel="noopener">WhatsApp us</a>
+        </p>
+
+        <p>
+          <span>🕒</span>
+          <strong>Opening Hours</strong><br>
+          Please call to confirm today's opening hours.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © <span id="footer-year"></span> Vivek Family Dhaba · Hyderabad, Telangana
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const WHATSAPP_NUMBER = "917024386895";
+      const DELIVERY_FEE = 30;
+
+      const $ = id => document.getElementById(id);
+      const money = amount => "₹" + Number(amount).toFixed(2);
+
+      const menu = [
+        {
+          id: "paneer",
+          name: "Paneer Butter Masala",
+          price: 220,
+          category: "main",
+          label: "MAIN COURSE",
+          description: "Rich and creamy paneer curry.",
+          image: "https://d1w7312wesee68.cloudfront.net/L9vCLBiDVXZWRcwPXoGzuTR8EAsH0ORgo172RvYXKls/ext%3Awebp/quality%3A85/plain/s3%3A/toast-sites-resources-prod/restaurantImages/81effb64-3a98-4eee-ba10-f3b20ff68c45/ChatGPTImageJun23202603_14_42PM.png"
+        },
+        {
+          id: "dal",
+          name: "Dal Tadka",
+          price: 140,
+          category: "main",
+          label: "MAIN COURSE",
+          description: "Comforting yellow lentils tempered with Indian spices.",
+          image: "https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_960,w_960//InstamartAssets/dal_tadka.webp?updatedAt=1727162171184"
+        },
+        {
+          id: "mixveg",
+          name: "Mix Veg",
+          price: 170,
+          category: "main",
+          label: "MAIN COURSE",
+          description: "Mixed vegetables cooked with aromatic Indian spices.",
+          image: "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto/FOOD_CATALOG/IMAGES/CMS/2025/12/18/fccb1673-5892-4639-b780-1159d3b4c1a5_d74e4ba7-4cc4-4aa3-be5a-ba30f5dcfaa3.jpg"
+        },
+        {
+          id: "aloogobi",
+          name: "Aloo Gobi",
+          price: 150,
+          category: "main",
+          label: "MAIN COURSE",
+          description: "Homestyle potato and cauliflower curry.",
+          image: "https://www.indianweekender.co.nz/hubfs/WhatsApp%20Image%202026-09-16%20at%2011.39.44%20AM.jpeg"
+        },
+        {
+          id: "rice",
+          name: "Steamed Rice",
+          price: 90,
+          category: "rice",
+          label: "RICE & BIRYANI",
+          description: "Light, fluffy, freshly cooked rice.",
+          image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=700&q=85"
+        },
+        {
+          id: "biryani",
+          name: "Veg Biryani",
+          price: 180,
+          category: "rice",
+          label: "RICE & BIRYANI",
+          description: "Fragrant rice with vegetables and aromatic spices.",
+          image: "https://tawaindiancuisine.com/admin/uploads/featured-image/1722215423133723546666a6ebff5b5d3Veg%20biryani.jpg"
+        },
+        {
+          id: "jeera",
+          name: "Jeera Rice",
+          price: 110,
+          category: "rice",
+          label: "RICE & BIRYANI",
+          description: "Rice flavoured with fragrant cumin seeds.",
+          image: "https://d1w7312wesee68.cloudfront.net/F5krd33cSPKq6_nWbu5oRU0IpqIAhDzA1Ld_acT_Xxk/resize%3Afit%3A720%3A720/plain/s3%3A/toasttab/restaurants/restaurant-176719000000000000/menu/items/1/item-900000022837412081_1772756111.jpg"
+        },
+        {
+          id: "roti",
+          name: "Tandoori Roti",
+          price: 15,
+          category: "bread",
+          label: "BREADS",
+          description: "Traditional Indian bread, perfect with curry.",
+          image: "https://s3.us-east-2.amazonaws.com/pfimg1/013/38/4d/384d9d9b35f529a44fc15745576b59bf_1280m.jpg"
+        },
+        {
+          id: "naan",
+          name: "Butter Naan",
+          price: 45,
+          category: "bread",
+          label: "BREADS",
+          description: "Soft naan finished with delicious butter.",
+          image: "https://jaiindiankitchen.com/media/products/butter-naan-jai-indian-kitchen.jpeg"
+        },
+        {
+          id: "thali",
+          name: "Veg Thali",
+          price: 180,
+          category: "thali",
+          label: "THALI",
+          description: "A balanced meal with Indian favourites.",
+          image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=700&q=85"
+        },
+        {
+          id: "specialthali",
+          name: "Special Thali",
+          price: 250,
+          category: "thali",
+          label: "THALI",
+          description: "A hearty platter for a satisfying meal.",
+          image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=85"
+        }
+      ];
+
+      let cart = {};
+      let activeCategory = "all";
+
+      try {
+        cart = JSON.parse(localStorage.getItem("vivekDhabaCart") || "{}") || {};
+      } catch (error) {
+        cart = {};
+      }
+
+      // Only restore valid cart items.
+      const validCart = {};
+      Object.values(cart).forEach(item => {
+        const dish = menu.find(food => food.id === item.id);
+        if (dish && Number.isInteger(item.qty) && item.qty > 0) {
+          validCart[dish.id] = { ...dish, qty: item.qty };
+        }
+      });
+      cart = validCart;
+
+      function saveCart() {
+        try {
+          localStorage.setItem("vivekDhabaCart", JSON.stringify(cart));
+        } catch (error) {
+          // The cart continues working for the current page session.
+        }
+      }
+
+      function getSubtotal() {
+        return Object.values(cart).reduce(
+          (sum, item) => sum + item.price * item.qty,
+          0
+        );
+      }
+
+      function getDeliveryCharge() {
+        return $("order-type").value === "delivery" && getSubtotal() > 0
+          ? DELIVERY_FEE
+          : 0;
+      }
+
+      function getCartCount() {
+        return Object.values(cart).reduce(
+          (sum, item) => sum + item.qty,
+          0
+        );
+      }
+
+      function addToCart(id) {
+        const dish = menu.find(item => item.id === id);
+        if (!dish) return;
+
+        if (cart[id]) {
+          cart[id].qty += 1;
+        } else {
+          cart[id] = { ...dish, qty: 1 };
+        }
+
+        saveCart();
+        renderCart();
+
+        const button = document.querySelector(
+          `.add-to-cart[data-id="${id}"]`
+        );
+
+        if (button) {
+          const oldText = button.textContent;
+          button.textContent = "Added ✓";
+          setTimeout(() => {
+            button.textContent = oldText;
+          }, 900);
+        }
+      }
+
+      function changeQuantity(id, amount) {
+        if (!cart[id]) return;
+
+        cart[id].qty += amount;
+
+        if (cart[id].qty <= 0) {
+          delete cart[id];
+        }
+
+        saveCart();
+        renderCart();
+      }
+
+      function createButton(text, className, handler, label) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = className;
+        button.textContent = text;
+
+        if (label) button.setAttribute("aria-label", label);
+        button.addEventListener("click", handler);
+
+        return button;
+      }
+
+      function renderMenu() {
+        const grid = $("food-grid");
+        const query = $("menu-search").value.trim().toLowerCase();
+
+        grid.replaceChildren();
+        let visible = 0;
+
+        menu.forEach(dish => {
+          const matchesSearch = (
+            dish.name + " " + dish.description + " " + dish.label
+          ).toLowerCase().includes(query);
+
+          const matchesCategory =
+            activeCategory === "all" ||
+            dish.category === activeCategory;
+
+          if (!matchesSearch || !matchesCategory) return;
+
+          visible++;
+
+          const article = document.createElement("article");
+          article.className = "food-card";
+
+          const imageWrap = document.createElement("div");
+          imageWrap.className = "food-image";
+
+          const image = document.createElement("img");
+          image.src = dish.image;
+          image.alt = dish.name;
+          image.loading = "lazy";
+          image.onerror = () => {
+            image.style.display = "none";
+          };
+
+          imageWrap.appendChild(image);
+
+          const info = document.createElement("div");
+          info.className = "food-info";
+
+          const category = document.createElement("span");
+          category.className = "food-category";
+          category.textContent = dish.label;
+
+          const title = document.createElement("h3");
+          title.textContent = dish.name;
+
+          const description = document.createElement("p");
+          description.textContent = dish.description;
+
+          const bottom = document.createElement("div");
+          bottom.className = "food-bottom";
+
+          const price = document.createElement("strong");
+          price.textContent = money(dish.price);
+
+          const addButton = createButton(
+            "Add to Cart",
+            "btn btn-primary add-to-cart",
+            () => addToCart(dish.id)
+          );
+          addButton.dataset.id = dish.id;
+
+          bottom.append(price, addButton);
+          info.append(category, title, description, bottom);
+          article.append(imageWrap, info);
+          grid.appendChild(article);
+        });
+
+        $("empty-search").hidden = visible !== 0;
+      }
+
+      function renderCart() {
+        const container = $("cart-items");
+        container.replaceChildren();
+
+        const items = Object.values(cart);
+
+        if (items.length === 0) {
+          const empty = document.createElement("p");
+          empty.className = "cart-empty";
+          empty.textContent = "Your cart is empty. Add food from the menu.";
+          container.appendChild(empty);
+        } else {
+          items.forEach(item => {
+            const row = document.createElement("div");
+            row.className = "cart-row";
+
+            const details = document.createElement("div");
+
+            const title = document.createElement("h4");
+            title.textContent = item.name;
+
+            const price = document.createElement("small");
+            price.textContent =
+              `${money(item.price)} each · ${money(item.price * item.qty)}`;
+
+            const controls = document.createElement("div");
+            controls.className = "quantity-controls";
+
+            const minus = createButton(
+              "−",
+              "qty-btn",
+              () => changeQuantity(item.id, -1),
+              "Decrease quantity"
+            );
+
+            const quantity = document.createElement("span");
+            quantity.textContent = item.qty;
+
+            const plus = createButton(
+              "+",
+              "qty-btn",
+              () => changeQuantity(item.id, 1),
+              "Increase quantity"
+            );
+
+            const remove = createButton(
+              "Remove",
+              "remove-btn",
+              () => {
+                delete cart[item.id];
+                saveCart();
+                renderCart();
+              }
+            );
+
+            controls.append(minus, quantity, plus, remove);
+            details.append(title, price, controls);
+
+            const lineTotal = document.createElement("strong");
+            lineTotal.textContent = money(item.price * item.qty);
+
+            row.append(details, lineTotal);
+            container.appendChild(row);
+          });
+        }
+
+        $("cart-count").textContent = getCartCount();
+        $("cart-subtotal").textContent = money(getSubtotal());
+        $("delivery-charge").textContent = money(getDeliveryCharge());
+        $("cart-total").textContent =
+          money(getSubtotal() + getDeliveryCharge());
+      }
+
+      // Search and category filters.
+      $("menu-search").addEventListener("input", renderMenu);
+
+      $("menu-search").addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+          $("menu-search").value = "";
+          renderMenu();
+        }
+      });
+
+      document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", () => {
+          activeCategory = button.dataset.category;
+
+          document.querySelectorAll(".filter-btn").forEach(filter => {
+            filter.classList.toggle("active", filter === button);
+          });
+
+          renderMenu();
+        });
+      });
+
+      // Clear all cart items.
+      $("clear-cart").addEventListener("click", () => {
+        cart = {};
+        saveCart();
+        renderCart();
+      });
+
+      // Recalculate delivery whenever the order type changes.
+      $("order-type").addEventListener("change", renderCart);
+
+      // Payment selection is a demo; no payment is collected here.
+      $("payment-method").addEventListener("change", () => {
+        const method = $("payment-method").value;
+
+        $("payment-note").textContent = method === "cod"
+          ? "Cash on delivery / pay at counter. Confirm final payment with the restaurant."
+          : "Demo only: this website does not collect online payments. Arrange payment with the restaurant.";
+      });
+
+      // Prepare order details and open WhatsApp.
+      $("order-form").addEventListener("submit", event => {
+        event.preventDefault();
+
+        if (Object.keys(cart).length === 0) {
+          $("order-message").textContent =
+            "Your cart is empty. Please add at least one dish before placing an order.";
+
+          $("cart").scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+
+        if (!event.currentTarget.reportValidity()) return;
+
+        const name = $("customer-name").value.trim();
+        const phone = $("customer-phone").value.trim();
+        const address = $("customer-address").value.trim();
+        const orderType = $("order-type").selectedOptions[0].text;
+        const payment = $("payment-method").selectedOptions[0].text;
+        const instructions =
+          $("special-instructions").value.trim() || "None";
+
+        const lines = Object.values(cart).map(item =>
+          `• ${item.name} × ${item.qty} = ${money(item.price * item.qty)}`
+        );
+
+        const message = [
+          "Hello Vivek Family Dhaba! I would like to place an order.",
+          "",
+          `Name: ${name}`,
+          `Customer phone: ${phone}`,
+          `Order type: ${orderType}`,
+          `Address/location: ${address}`,
+          "",
+          "Items:",
+          ...lines,
+          "",
+          `Subtotal: ${money(getSubtotal())}`,
+          `Delivery: ${money(getDeliveryCharge())}`,
+          `Total: ${money(getSubtotal() + getDeliveryCharge())}`,
+          `Payment: ${payment}`,
+          `Special instructions: ${instructions}`,
+          "Restaurant location: Hyderabad, Telangana"
+        ].join("\n");
+
+        $("order-message").textContent =
+          "WhatsApp is opening with your order. Review the message and press Send to submit it.";
+
+        const url =
+          `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+
+      // Mobile navigation.
+      $("menu-toggle").addEventListener("click", () => {
+        const nav = $("nav-links");
+        const isOpen = nav.classList.toggle("open");
+
+        $("menu-toggle").setAttribute("aria-expanded", String(isOpen));
+        $("menu-toggle").setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation" : "Open navigation"
+        );
+      });
+
+      $("nav-links").querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          $("nav-links").classList.remove("open");
+          $("menu-toggle").setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // Set the current year in the footer.
+      $("footer-year").textContent = new Date().getFullYear();
+
+      // Initial page render.
+      renderMenu();
+      renderCart();
+    })();
+  </script>
+</body>
+</html>
